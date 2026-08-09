@@ -3,14 +3,17 @@
 ##  0.1.0-SNAPSHOT
 
 * [FEATURED]
-* added telegram bot to project
-* added SpringBoot skeleton to project
+* Telegram bot was added to the project
+* SpringBoot skeleton was added ti the project
 * ================================================
 
 ## 0.2.0-SNAPSHOT
 
 * [FEATURED]
-* added telegram bot pattern and realize base function to start working
-
+* Telegram bot pattern was added and base functions (to start working) were realized
 * ================================================
-* added dependencies: google - Guava 
+* Dependencies was added: google - Guava
+
+## 0.3.0-SNAPSHOT
+
+* Tests for the main commands were added and executed.

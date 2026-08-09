@@ -8,7 +8,7 @@ public class UnknownCommand implements Command {
 
     public final SendBotMessageService sendBotMessageService;
 
-    private final static String UNKNOWN_MESSAGE = "Эта команда мне неизвеста или это не является " +
+    public final static String UNKNOWN_MESSAGE = "Эта команда мне неизвеста или это не является " +
             "допустимой командой. /help - список команд";
 
     public UnknownCommand(SendBotMessageService sendBotMessageService) {
