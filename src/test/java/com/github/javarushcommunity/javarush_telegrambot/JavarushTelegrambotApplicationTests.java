@@ -9,9 +9,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import static org.mockito.Mockito.mock;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-@ActiveProfiles("test")
+@TestPropertySource(properties = {
+        "bot.username=test_bot",
+        "bot.token=test_token"
+})
 class JavarushTelegrambotApplicationTests {
 
     @Configuration
