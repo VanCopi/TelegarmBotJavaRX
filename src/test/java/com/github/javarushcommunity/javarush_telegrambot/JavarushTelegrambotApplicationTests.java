@@ -16,6 +16,7 @@ import org.springframework.test.context.TestPropertySource;
         "bot.username=test_bot",
         "bot.token=test_token"
 })
+@ActiveProfiles("test")
 class JavarushTelegrambotApplicationTests {
 
     @Configuration
