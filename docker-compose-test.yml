@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   jrtb-db:
     image: mysql:5.7
@@ -12,4 +10,4 @@ services:
     ports:
       - "3307:3306"
     expose:
-      - '3306'
+      - '3307'

@@ -1,12 +1,30 @@
-version: '3.1'
-
 services:
-  jrtb:
+  jrtb-bot-1:
+    container_name: jrtb-bot-1
+    depends_on:
+      jrtb-db-1:
+        condition: service_healthy
     build:
       context: .
+    network_mode: "bridge"
+    env_file:
+      - Log.env
+    restart: unless-stopped
 
-    network_mode: "host"
+  jrtb-db-1:
+    image: mysql:5.7
+    restart: unless-stopped
+    container_name: jrtb-db-1
     environment:
-      - BOT_NAME=javarush_RX_community_bot
-      - BOT_TOKEN=8917055052:AAHyf7YKYXb56MFi-IyctQ8Hiwole_NUZ6I
-    restart: always
+      MYSQL_DATABASE: "dev_jrtb_db"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "dev_user"
+      MYSQL_PASSWORD: "dev_jrtb_db_password"
+    ports:
+      - "3307:3306"
+    expose:
+      - "3307"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10

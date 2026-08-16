@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 
 import static com.github.javarushcommunity.javarush_telegrambot.command.CommandName.START;
 import static com.github.javarushcommunity.javarush_telegrambot.command.StartCommand.START_MESSAGE;
+import com.github.javarushcommunity.javarush_telegrambot.service.TelegramUserService;
+import org.mockito.Mockito;
 
 @DisplayName("Unit-level testing for StartCommand")
 class StartCommandTest extends AbstractCommandTest {
@@ -20,6 +22,7 @@ class StartCommandTest extends AbstractCommandTest {
 
     @Override
     Command getCommand() {
-        return new StartCommand(sendBotMessageService);
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        return new StartCommand(sendBotMessageService, telegramUserService);
     }
 }

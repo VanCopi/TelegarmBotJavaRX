@@ -1,8 +1,10 @@
 package com.github.javarushcommunity.javarush_telegrambot.bot;
 
+import com.github.javarushcommunity.javarush_telegrambot.service.TelegramUserService;
 import jakarta.ws.rs.ext.ParamConverter;
 import com.github.javarushcommunity.javarush_telegrambot.command.CommandContainer;
 import com.github.javarushcommunity.javarush_telegrambot.service.SendBotMessageServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Lazy;
@@ -29,8 +31,9 @@ public class JavarushTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public JavarushTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public JavarushTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
 
     @Override

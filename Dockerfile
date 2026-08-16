@@ -1,6 +1,5 @@
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jre
 ARG JAR_FILE=target/*.jar
-ENV BOT_NAME=test.javarush_RX_community_bot
-ENV BOT_TOKEN=8917055052:AAHyf7YKYXb56MFi-IyctQ8Hiwole_NUZ6I
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-Dbot.username=${BOT_NAME}", "-Dbot.token=${BOT_TOKEN}", "-jar", "/app.jar"]
+COPY src/main/resources/application.properties application.properties
+ENTRYPOINT ["java","-Dspring.datasource.password=${BOT_DB_PASSWORD}","-Dbot.username=${BOT_NAME}","-Dbot.token=${BOT_TOKEN}","-Dspring.datasource.username=${BOT_DB_USERNAME}","-jar", "app.jar"]
